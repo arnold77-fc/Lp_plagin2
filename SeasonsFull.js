@@ -81,7 +81,7 @@
             tomorrow: 'Amanhã',
             inWeek: 'Em uma semana',
             inDays: 'Em %d dias',
-            movie: 'Filme',
+            movie: 'Фильм',
             tv: 'Série' // Изменено с SÉRIE на Série
         },
         bg: {
@@ -417,6 +417,19 @@
     .card--series-status.show {
         opacity: 1;
     }
+
+    /* === НОВОЕ: ИСПРАВЛЕНИЕ ДЛЯ ГОРИЗОНТАЛЬНЫХ ПОСТЕРОВ === */
+    .card--wide .card--season-complete, 
+    .card--wide .card--season-progress {
+        bottom: auto !important;
+        top: 32px !important; /* Смещаем под плашку "Сериал" */
+        left: 0 !important;
+    }
+    .card--wide .card--series-status {
+        bottom: auto !important;
+        top: 5px !important; /* В правый верхний угол */
+        right: 0 !important;
+    }
     
     /* Адаптация для мобильных устройств */
     @media (max-width: 768px) {
@@ -448,6 +461,9 @@
             padding: 0.25em 0.2em;
             border-radius: 0.18em;
         }
+
+        .card--wide .card--season-complete, .card--wide .card--season-progress { bottom: auto !important; top: 28px !important; }
+        .card--wide .card--series-status { bottom: auto !important; top: 4px !important; }
     }
 
     @media (max-width: 480px) {
@@ -479,6 +495,9 @@
             padding: 0.2em 0.15em;
             border-radius: 0.15em;
         }
+
+        .card--wide .card--season-complete, .card--wide .card--season-progress { bottom: auto !important; top: 24px !important; }
+        .card--wide .card--series-status { bottom: auto !important; top: 3px !important; }
     }
     `;
     document.head.appendChild(style);
