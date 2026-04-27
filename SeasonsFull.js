@@ -336,6 +336,15 @@
         opacity: 0;
         transition: opacity 0.22s ease-in-out;
     }
+
+    /* === СТИЛИ ДЛЯ ГОРИЗОНТАЛЬНЫХ КАРТОЧЕК === */
+    .card--season-complete.badge-horizontal,
+    .card--season-progress.badge-horizontal {
+        left: 50% !important;
+        margin-left: 0 !important;
+        transform: translateX(-50%) !important;
+        bottom: 8px !important; /* Опускаем вниз, чтобы не перекрывать 4K/HDR */
+    }
     
     /* Общие стили для текста в метках сезона */
     .card--season-complete div,
@@ -434,6 +443,11 @@
             margin-left: -0.15em;
             border-radius: 0.18em;
         }
+
+        .card--season-complete.badge-horizontal,
+        .card--season-progress.badge-horizontal {
+            bottom: 6px !important;
+        }
         
         .card--season-complete div,
         .card--season-progress div {
@@ -464,6 +478,11 @@
             bottom: 43px;
             margin-left: -0.1em;
             border-radius: 0.15em;
+        }
+
+        .card--season-complete.badge-horizontal,
+        .card--season-progress.badge-horizontal {
+            bottom: 5px !important;
         }
         
         .card--season-complete div,
@@ -649,6 +668,26 @@
         return statusBadge;
     }
 
+    // === ФУНКЦИЯ ПРОВЕРКИ ОРИЕНТАЦИИ КАРТОЧКИ ===
+    function applyOrientationStyle(cardEl, badgeEl) {
+        var apply = function() {
+            if (!cardEl || !badgeEl) return;
+            var w = cardEl.offsetWidth || 0;
+            var h = cardEl.offsetHeight || 0;
+            var isHor = cardEl.classList.contains('card--wide') || 
+                        cardEl.classList.contains('card--category') || 
+                        cardEl.classList.contains('card--landscape') ||
+                        (w > h * 1.1 && h > 0);
+                        
+            if (isHor) {
+                badgeEl.classList.add('badge-horizontal');
+            }
+        };
+        apply();
+        setTimeout(apply, 100);
+        setTimeout(apply, 500); 
+    }
+
     function addSeasonBadge(cardEl) {
         if (!cardEl || cardEl.hasAttribute('data-season-processed')) return;
 
@@ -685,6 +724,9 @@
         if (mediaType === 'tv') {
             var badge = createBadge('...', false, true);
             view.appendChild(badge);
+            
+            // Вызываем проверку ориентации
+            applyOrientationStyle(cardEl, badge);
 
             cardEl.setAttribute('data-season-processed', 'loading');
 
@@ -711,6 +753,9 @@
                         // Створюємо новий badge
                         badge = createBadge(content, isComplete, false);
                         view.appendChild(badge);
+                        
+                        // Снова вызываем проверку ориентации на новом элементе
+                        applyOrientationStyle(cardEl, badge);
 
                         setTimeout(function() {
                             badge.classList.add('show');
