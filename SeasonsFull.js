@@ -27,7 +27,7 @@
             inWeek: 'Через неделю',
             inDays: 'Через %d дн.',
             movie: 'Фильм',
-            tv: 'Сериал' // Изменено с СЕРИАЛ на Сериал
+            tv: 'Сериал'
         },
         en: {
             sequel: 'Sequel',
@@ -38,7 +38,7 @@
             inWeek: 'In a week',
             inDays: 'In %d days',
             movie: 'Movie',
-            tv: 'Series' // Изменено с SERIES на Series
+            tv: 'Series'
         },
         uk: {
             sequel: 'Сіквел',
@@ -49,7 +49,7 @@
             inWeek: 'Через тиждень',
             inDays: 'Через %d дн.',
             movie: 'Фільм',
-            tv: 'Серіал' // Изменено с СЕРІАЛ на Серіал
+            tv: 'Серіал'
         },
         be: {
             sequel: 'Сіквел',
@@ -60,7 +60,7 @@
             inWeek: 'Праз тыдзень',
             inDays: 'Праз %d дн.',
             movie: 'Фільм',
-            tv: 'Серыял' // Изменено с СЕРЫЯЛ на Серыял
+            tv: 'Серыял'
         },
         zh: {
             sequel: '续集',
@@ -82,7 +82,7 @@
             inWeek: 'Em uma semana',
             inDays: 'Em %d dias',
             movie: 'Filme',
-            tv: 'Série' // Изменено с SÉRIE на Série
+            tv: 'Série'
         },
         bg: {
             sequel: 'Сиквел',
@@ -93,7 +93,7 @@
             inWeek: 'След седмица',
             inDays: 'След %d дни',
             movie: 'Филм',
-            tv: 'Сериал' // Изменено с СЕРИАЛ на Сериал
+            tv: 'Сериал'
         },
         cs: {
             sequel: 'Pokračování',
@@ -104,7 +104,7 @@
             inWeek: 'Za týden',
             inDays: 'Za %d dn.',
             movie: 'Film',
-            tv: 'Seriál' // Изменено с SERIÁL на Seriál
+            tv: 'Seriál'
         },
         he: {
             sequel: 'סִקְוֶל',
@@ -287,7 +287,7 @@
         white-space: nowrap;
         text-align: center;
         text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.3);
-        text-transform: capitalize; /* Добавляем capitalize для правильного отображения */
+        text-transform: capitalize;
     }
     
     /* Цветовые варианты для типа контента */
@@ -340,9 +340,11 @@
     /* === СТИЛИ ДЛЯ ГОРИЗОНТАЛЬНЫХ КАРТОЧЕК === */
     .card--season-complete.badge-horizontal,
     .card--season-progress.badge-horizontal {
-        left: 50% !important;
+        left: auto !important;
+        right: 0 !important;
         margin-left: 0 !important;
-        transform: translateX(-50%) !important;
+        margin-right: -0.25em !important;
+        transform: none !important;
         bottom: 8px !important; /* Опускаем вниз, чтобы не перекрывать 4K/HDR */
     }
     
@@ -447,6 +449,7 @@
         .card--season-complete.badge-horizontal,
         .card--season-progress.badge-horizontal {
             bottom: 6px !important;
+            margin-right: -0.15em !important;
         }
         
         .card--season-complete div,
@@ -483,6 +486,7 @@
         .card--season-complete.badge-horizontal,
         .card--season-progress.badge-horizontal {
             bottom: 5px !important;
+            margin-right: -0.1em !important;
         }
         
         .card--season-complete div,
